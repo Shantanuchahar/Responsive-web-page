@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive landing page Task-01</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation styles */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      z-index: 999;
+    }
+
+    nav.scrolled {
+      background-color: #0d0d0d;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      color: #00ffff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .menu li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      padding: 0.5rem;
+    }
+
+    .menu li a:hover {
+      color: #00ffff;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    /* Content for demo */
+    header {
+      height: 100vh;
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      background-color: #f9f9f9;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        background-color: #111;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        display: none;
+      }
+
+      .menu.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5rem;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="logo">ProDigy Infotech</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="menu" id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#task">Task</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <h1>Comillas Negras – Task-01</h1>
+    <p>Responsive Landing Page</p>
+  </header>
+
+  <section id="task">
+    <h2>Task Overview</h2>
+    <p>This section contains the project or task description content. Scroll to see the navbar change color!</p>
+  </section>
+
+  <section id="about">
+    <h2>About ProDigy Infotech</h2>
+    <p>ProDigy Infotech is committed to delivering modern, responsive, and interactive web solutions.</p>
+  </section>
+
+  <script>
+    // Change nav style on scroll
+    window.addEventListener('scroll', function () {
+      const nav = document.getElementById('navbar');
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
